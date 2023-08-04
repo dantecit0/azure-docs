@@ -291,6 +291,9 @@ DNS servers within a virtual network can forward DNS queries to the recursive re
 
 DNS forwarding also enables DNS resolution between virtual networks, and allows your on-premises machines to resolve Azure-provided host names. In order to resolve a VM's host name, the DNS server VM must reside in the same virtual network, and be configured to forward host name queries to Azure. Because the DNS suffix is different in each virtual network, you can use conditional forwarding rules to send DNS queries to the correct virtual network for resolution. The following image shows two virtual networks and an on-premises network doing DNS resolution between virtual networks, by using this method. An example DNS forwarder is available in the [Azure Quickstart Templates gallery](https://azure.microsoft.com/resources/templates/dns-forwarder) and [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder).
 
+> [!IMPORTANT]
+> While using conditional forwarders for Private DNS Zones in Azure in your DNS Server hosted in a VM, make sure to use Azure DNS IP (168.63.129.16) as Primary and Secondary servers to improve resiliency.
+
 > [!NOTE]
 > A role instance can perform name resolution of VMs within the same virtual network. It does so by using the FQDN, which consists of the VM's host name and **internal.cloudapp.net** DNS suffix. However, in this case, name resolution is only successful if the role instance has the VM name defined in the [Role Schema (.cscfg file)](/previous-versions/azure/reference/jj156212(v=azure.100)).
 > `<Role name="<role-name>" vmName="<vm-name>">`
