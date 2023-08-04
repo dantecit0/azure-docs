@@ -7,18 +7,13 @@ author: mbender-ms
 ms.author: mbender
 ms.service: load-balancer
 ms.topic: how-to 
-ms.date: 06/09/2022
-ms.custom: template-how-to 
+ms.date: 06/27/2023
+ms.custom: template-how-to, engagement-fy23
 ---
-
-<!--
-Remove all the comments in this template before you sign-off or merge to the 
-main branch.
--->
 
 # Get Load Balancer metrics with Azure Monitor CLI 
 
-In this article, you'll learn some examples to list Load Balancer metrics using Azure Monitor CLI.
+In this article, you learn some examples to list Load Balancer metrics using Azure Monitor CLI.
 
 Complete reference documentation and other samples for retrieving metrics using Azure Monitor CLI are available in the [az monitor metrics reference](/cli/azure/monitor/metrics).
 
@@ -44,7 +39,7 @@ For metric definitions and further details, refer to [Monitoring load balancer d
 ## CLI examples for Load Balancer metrics 
 <!-- Introduction paragraph -->
 
-The [az monitor metrics](/cli/azure/monitor/metrics/) command is used to view Azure resource metrics. To see the metric definitions available for a Standard Load Balancer, you run the `az monitor metrics list-definitions` command. 
+The [az monitor metrics](/cli/azure/monitor/metrics/) command is used to view Azure resource metrics. To see the metric definitions available for a Standard Load Balancer, you run the [az monitor metrics list-definitions](/cli/azure/monitor/metrics#az-monitor-metrics-list-definitions) command. 
 
 ```azurecli
 # Display available metric definitions for a Standard Load Balancer resource
@@ -54,7 +49,7 @@ az monitor metrics list-definitions --resource <resource_id>
 >[!NOTE]
 >In the all the following examples, replace **<resource_id>** with the unique resource id of your Standard Load Balancer. 
 
-To retrieve Standard Load Balancer metrics for a resource, you can use the `az monitor metrics list` command. For example, use the `--metric DipAvailability` option to collect the Health Probe Status metric from a Standard Load Balancer. 
+To retrieve Standard Load Balancer metrics for a resource, you can use the [az monitor metrics list](/cli/azure/monitor/metrics#az-monitor-metrics-list) command. For example, use the `--metric DipAvailability` option to collect the Health Probe Status metric from a Standard Load Balancer. 
 
 ```azurecli
 
@@ -99,7 +94,7 @@ You can specify the aggregation type for a metric with the `–-aggregation` par
 
 az monitor metrics list --resource <resource_id> --metric DipAvailability --aggregation Average 
 ```
-To specify the interval to metrics, use the `--interval` parameter and specify a value in ##h##m format. The default interval is 1m.
+To specify the interval to metrics, use the `--interval` parameter and specify a value in ##h##m format. The default interval is 1 m.
 
 ```azurecli
 
